@@ -52,9 +52,9 @@ dbConn.connect();
      dbConn.query('SELECT * FROM form2.Form', function(error, results, fields) {
         if (error) throw error;
          if (results.length > 0) {
-             return res.send({ error: false, data: results });
+             return res.send({results});
          } else {
-            return res.send({ error: true, data: results });
+            return res.send({results});
         }
     });
 });
@@ -117,7 +117,7 @@ app.post('/formulario', function(req, res) {
 
     dbConn.query("INSERT INTO form2.Form SET ? ", form, function(error, results, fields) {
         if (error) throw error;
-        return res.send({ error: false, data: results, message: 'New form has been created successfully.' });
+        return res.send({ error: false, results, message: 'New form has been created successfully.' });
     });
 });
 
